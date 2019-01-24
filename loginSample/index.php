@@ -7,18 +7,25 @@
         return false;
     }
 
-
-    // Start the session
     session_start();
 ?>
 <!DOCTYPE html>
 <html>
     <body>
+        <form method="POST" action="index.php">
 
+            <input type="text" name="username">
+            <br>
+            <input type="password" name="password">
+            <br>
+            <input type="submit" name="submit" value="submit">
+        
+        </form>
+        <form method="POST" action="formulario.html">
+            <input type="submit" name="submit" value="Crear nuevo usuario">
+        </form>
         <?php
-
             if (isset($_POST['submit'])){
-                // Set session variables
                 $username = $_POST["username"];
                 $password = $_POST["password"];
 
@@ -32,17 +39,6 @@
                 }
 
             }
-           
         ?>
-
-        <form method="POST" action="index.php">
-
-            <input type="text" name="username">
-            <br>
-            <input type="password" name="password">
-            <br>
-            <input type="submit" name="submit" value="submit">
-        
-        </form>
     </body>
 </html>

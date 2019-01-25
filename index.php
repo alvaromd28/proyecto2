@@ -21,7 +21,7 @@
             <input type="submit" name="submit" value="submit">
         
         </form>
-        <form method="POST" action="formulario.html">
+        <form method="POST" action="register.php">
             <input type="submit" name="submit" value="Crear nuevo usuario">
         </form>
         <?php

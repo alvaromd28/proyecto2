@@ -14,7 +14,7 @@
 </head>
 <body>
 <div class="signup-form">
-    <form action="/examples/actions/confirmation.php" method="post">
+    <form action="register.php" method="post">
 		<h2>Register</h2>
 		<p class="hint-text">Create your account. It's free and only takes a minute.</p>
         <div class="form-group">
@@ -36,10 +36,30 @@
 			<label class="checkbox-inline"><input type="checkbox" required="required"> I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label>
 		</div>
 		<div class="form-group">
-            <button type="submit" class="btn btn-success btn-lg btn-block">Register Now</button>
+            <button type="submit" name="submit" class="btn btn-success btn-lg btn-block">Register Now</button>
         </div>
     </form>
 	<div class="text-center">Already have an account? <a href="#">Sign in</a></div>
 </div>
+<?php
+    
+    require_once('util/validator.php');
+            
+    if (isset($_POST['submit'])){
+        if(checkName($_POST['first_name']) &&
+        checkName($_POST['last_name']) &&
+        checkEmail($_POST['email']) &&
+        checkPasswords($_POST['password']) &&
+        checkPasswords($_POST['confirm_password'])
+        ){
+            echo "<h1>HOLA</h1>";
+            return true;
+        }
+        else{
+            echo "<h1>MAL</h1>";
+            return FALSE;
+        }
+    }
+?>
 </body>
 </html>                            

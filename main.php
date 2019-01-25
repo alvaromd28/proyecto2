@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 
@@ -25,13 +28,13 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.php">
+        <a class="navbar-brand" href="main.php">
           Icsitter
         </a>
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav" id="myNavbar">
-          <li><a href="index.php"><i class="fas fa-home"></i></a></li>
+          <li><a href="main.php"><i class="fas fa-home"></i></a></li>
           <li><a href="#"><i class="fas fa-bell"></i></a></li>
           <li><a href="#"><i class="far fa-envelope"></i></a></li>
         </ul>
@@ -112,7 +115,7 @@
 						<input type="password" class="form-control" name="password" placeholder="Password" required="required">	
 					</div>        
 					<div class="form-group">
-						<button type="submit" href="index.php" class="btn-lg color btn-block">Login</button>
+						<button type="submit" href="main.php" class="btn-lg color btn-block">Login</button>
 					</div>
 				</form>
 			</div>

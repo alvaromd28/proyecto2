@@ -1,5 +1,5 @@
 <?php
-    function validateLetter ($letter){
+    function checkName ($letter){
         if(!preg_match("/^[a-zA-Z\s]*$/", $letter)){
             return false;
         }
@@ -8,8 +8,8 @@
         }
     } 
 
-    function validateEmail ($email){
-        elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    function checkEmail ($email){
+        if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             return false; 
         }
         else{
@@ -18,7 +18,7 @@
     }
 
     function checkPasswords ($password){
-        if (checkLength ($password) && 
+        if(checkLength ($password) && 
             checkNumbers ($password) &&
             checkLetters ($password) &&
             checkSpecialCharacters ($password)){
@@ -65,14 +65,14 @@
         }
     }
 
-    function checkDate ($date){
+    /*function checkDate ($date){
         if(preg_match("/[0-9]{4}[-][0-9]{2}[-][0-9]{2}/",$date)){
             return true;
         }
         else{
             return false;
         }
-    }
+    }*/
 
     function checkUserName ($name){
         if(!preg_match("/[a-zA-Z0-9\s]{3,15}/", $letter)){

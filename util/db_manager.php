@@ -13,9 +13,9 @@
         return $conn;
     }
 
-    function insert_user ($userName, $name, $first_surname, $second_surname, $birthday, $mail, $phone, $gender){
-        $val = "'$userName', '$name', '$first_surname', '$second_surname, '$birthday', '$mail', '$phone', '$gender'";
-        $sql = "INSERT INTO user (userName, name, first_surname, second_surname, birthday, mail, phone, gender, reg_date) VALUES (".$val.")";
+    function insert_user ($userName, $name, $first_surname, $birthday, $mail, $password){
+        $val = "'$userName', '$name', '$first_surname', '$birthday', '$mail', '$password'";
+        $sql = "INSERT INTO user (userName, name, first_surname, birthday, mail, password) VALUES (".$val.")";
         $conn = dbConnect("localhost","root","","icsitter");
         $conn->query($sql);
     }
@@ -57,4 +57,3 @@
         }
     }
 ?>
-   

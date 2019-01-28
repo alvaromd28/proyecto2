@@ -8,7 +8,7 @@ CREATE TABLE `user` (
     `name` VARCHAR(20) NOT NULL,
     first_surname VARCHAR(50) NOT NULL,
     birthday date NOT NULL, 
-    mail VARCHAR(50) NOT NULL,
+    mail VARCHAR(50) NOT NULL UNIQUE,
     reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     `password` varchar(50) NOT NULL,
     PRIMARY KEY (id)

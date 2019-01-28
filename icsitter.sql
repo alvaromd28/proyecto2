@@ -4,7 +4,7 @@ USE icsitter;
 
 CREATE TABLE `user` (
     id INT(11) AUTO_INCREMENT,
-    userName VARCHAR(20) NOT NULL,
+    userName VARCHAR(20) NOT NULL UNIQUE,
     `name` VARCHAR(20) NOT NULL,
     first_surname VARCHAR(50) NOT NULL,
     birthday date NOT NULL, 
@@ -12,7 +12,7 @@ CREATE TABLE `user` (
     reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     `password` varchar(50) NOT NULL,
     PRIMARY KEY (id)
-)
+);
 
 CREATE TABLE msg (
     id INT(11) AUTO_INCREMENT,

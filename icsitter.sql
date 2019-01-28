@@ -12,7 +12,7 @@ CREATE TABLE `user` (
     reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     `password` varchar(50) NOT NULL,
     PRIMARY KEY (id)
-)
+);
 
 CREATE TABLE msg (
     id INT(11) AUTO_INCREMENT,

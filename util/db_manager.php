@@ -14,6 +14,7 @@
     }
 
     function insert_user ($userName, $name, $first_surname, $second_surname, $birthday, $mail, $phone, $gender, $reg_date){
+        $reg_date = 
         $val = "'$userName', '$name', '$first_surname', '$second_surname, '$birthday', '$mail', '$phone', '$gender', '$reg_date'";
         $sql = "INSERT INTO user (userName, name, first_surname, second_surname, birthday, mail, phone, gender, reg_date) VALUES (".$val.")";
         $conn = dbConnect("localhost","root","","icsitter");
@@ -35,28 +36,26 @@
 
         if (mysqli_num_rows($result) > 0) {
             while($row = mysqli_fetch_assoc($result)) {
-                echo $row["user.userName"]. ": " . $row["msg"]. "<br>";
+                echo . $row["msg"]. "<br>";
             }
         } else {
             echo "0 results";
         }
     }
-
-    function get_user (){
-        $user = $_POST["userName"];
-        $password = $_POST["password"];
-        $sql = "SELECT userName, password from user where userName = '$user' and password = '$password'";
+    
+    function get_user ($userName, $password){
+        $sql = 'SELECT * from user where userName = "'.$userName.'" and password = "'.$password.'"';
         $conn = dbConnect("localhost","root","","icsitter");
         $result = $conn->query($sql);
 
         if (mysqli_num_rows($result) > 0) {
             while($row = mysqli_fetch_assoc($result)) {
+                $_SESSION['userName'] = $row['userName'];
                 return true;
             }
         } else {
             return false;
         }
-
     }
 ?>
    

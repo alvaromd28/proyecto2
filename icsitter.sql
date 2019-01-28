@@ -24,5 +24,3 @@ CREATE TABLE msg (
     PRIMARY KEY (id),
     FOREIGN KEY (user_id) REFERENCES user(id) ON UPDATE CASCADE
 );
-
-INSERT INTO user ()

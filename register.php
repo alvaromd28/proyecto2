@@ -24,14 +24,20 @@
 			</div>        	
         </div>
         <div class="form-group">
+        	<input type="text" class="form-control" name="user_name" placeholder="User Name" required="required">
+        </div>
+        <div class="form-group">
         	<input type="email" class="form-control" name="email" placeholder="Email" required="required">
         </div>
+        <div class="form-group">
+        	<input type="text" class="form-control" name="date" placeholder="Date of Birth" required="required">
+        </div> 
 		<div class="form-group">
             <input type="password" class="form-control" name="password" placeholder="Password" required="required">
         </div>
 		<div class="form-group">
             <input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password" required="required">
-        </div>        
+        </div>       
         <div class="form-group">
 			<label class="checkbox-inline"><input type="checkbox" required="required"> I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label>
 		</div>
@@ -46,14 +52,21 @@
     require_once('util/validator.php');
             
     if (isset($_POST['submit'])){
-        if(checkName($_POST['first_name']) &&
-        checkName($_POST['last_name']) &&
-        checkEmail($_POST['email']) &&
-        checkPasswords($_POST['password']) &&
-        checkPasswords($_POST['confirm_password'])
-        ){
-            echo "<h1>HOLA</h1>";
-            return true;
+        if(($_POST['password']) == ($_POST['confirm_password'])){
+            if(checkName($_POST['first_name']) &&
+            checkName($_POST['last_name']) &&
+            checkUserName($_POST['user_name']) &&
+            checkEmail($_POST['email']) &&
+            checkDate($_POST['date']) &&
+            checkPasswords($_POST['password'])
+            ){
+                echo "<h1>HOLA</h1>";
+                return true;
+            }
+            else{
+                echo "<h1>MAL</h1>";
+                return FALSE;
+            }
         }
         else{
             echo "<h1>MAL</h1>";

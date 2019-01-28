@@ -1,3 +1,30 @@
+<?php
+        
+        require_once('util/validator.php');
+        require_once('util/db_manager.php');
+                
+        if (isset($_POST['submit'])){
+            if(($_POST['password']) == ($_POST['confirm_password'])){
+                if(checkName($_POST['first_name']) &&
+                checkName($_POST['last_name']) &&
+                checkUserName($_POST['user_name']) &&
+                checkEmail($_POST['email']) &&
+                checkDate2($_POST['date']) &&
+                checkPasswords($_POST['password'])
+                ){
+                    insert_user($_POST['user_name'], $_POST['first_name'], $_POST['last_name'], $_POST['date'], $_POST['email'], $_POST['password']);
+                    header('Location: index.php');
+                }
+                else{
+                   echo '<h1> Datos mal introducidos </h1>';
+                }
+            }
+            else{
+                echo '<h1> Las contraseñas no son iguales </h1>';
+            }
+        }
+    ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,55 +50,33 @@
                     <div class="col-xs-6"><input type="text" class="form-control" name="last_name" placeholder="Last Name" required="required"></div>
                 </div>        	
             </div>
+
             <div class="form-group">
                 <input type="text" class="form-control" name="user_name" placeholder="User Name" required="required">
             </div>
+
             <div class="form-group">
                 <input type="email" class="form-control" name="email" placeholder="Email" required="required">
             </div>
+
             <div class="form-group">
-                <input type="text" class="form-control" name="date" placeholder="Date of Birth" required="required">
+                <input type="text" class="form-control" name="date" placeholder="YYYY-MM-DD" required="required">
             </div> 
+
             <div class="form-group">
                 <input type="password" class="form-control" name="password" placeholder="Password" required="required">
             </div>
+
             <div class="form-group">
                 <input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password" required="required">
             </div>       
-            <div class="form-group">
-                <label class="checkbox-inline"><input type="checkbox" required="required"> I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label>
-            </div>
+           
             <div class="form-group">
                 <button type="submit" name="submit" class="btn btn-success btn-lg btn-block">Register Now</button>
             </div>
         </form>
         <div class="text-center">Already have an account? <a href="index.php">Sign in</a></div>
     </div>
-    <?php
-        
-        require_once('util/validator.php');
-        require_once('util/db_manager.php');
-                
-        if (isset($_POST['submit'])){
-            if(($_POST['password']) == ($_POST['confirm_password'])){
-                if(checkName($_POST['first_name']) &&
-                checkName($_POST['last_name']) &&
-                checkUserName($_POST['user_name']) &&
-                checkEmail($_POST['email']) &&
-                checkDate2($_POST['date']) &&
-                checkPasswords($_POST['password'])
-                ){
-                    insert_user($_POST['user_name'], $_POST['first_name'], $_POST['last_name'], $_POST['date'], $_POST['email'], $_POST['password']);
-                    return true;
-                }
-                else{
-                    return false;
-                }
-            }
-            else{
-                return false;
-            }
-        }
-    ?>
+  
     </body>
 </html>                            

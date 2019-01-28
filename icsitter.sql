@@ -12,7 +12,7 @@ CREATE TABLE user (
     mail VARCHAR(50) NOT NULL,
     phone VARCHAR(15) NULL,
     gender enum('male,female'),
-    reg_date TIMESTAMP,
+    reg_date DEFAULT TIMESTAMP,
     password varchar(8) NOT NULL,
     PRIMARY KEY (id)
 );

@@ -50,6 +50,7 @@
     <?php
         
         require_once('util/validator.php');
+        require_once('util/db_manager.php');
                 
         if (isset($_POST['submit'])){
             if(($_POST['password']) == ($_POST['confirm_password'])){
@@ -60,6 +61,7 @@
                 checkDate2($_POST['date']) &&
                 checkPasswords($_POST['password'])
                 ){
+                    insert_user($_POST['user_name'], $_POST['first_name'], $_POST['last_name'], $_POST['date'], $_POST['email'], $_POST['password']);
                     return true;
                 }
                 else{

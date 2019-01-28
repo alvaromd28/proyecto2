@@ -64,7 +64,7 @@ session_start();
                 
                 $userName = $_POST['userName'];
                 $msg = $_POST['msg'];
-                insert ($userName, $msg);
+                insert_msg ($userName, $msg);
             }
             get_msg();
           ?>

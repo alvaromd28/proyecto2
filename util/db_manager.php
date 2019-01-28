@@ -20,8 +20,9 @@
         $conn->query($sql);
     }
 
-    function insert_msg ($msg, $user_id){
-        $sql = "INSERT INTO msg (msg,user_id) VALUES (".$msg.")";
+    function insert_msg ($msg, $user){
+        $user_id = "SELECT user.id from user where user.userName = '".$user."'";
+        $sql = "INSERT INTO msg (msg,user_id) VALUES (".$msg.",".$user_id.")";
         $conn = dbConnect("localhost","root","","icsitter");
         $conn->query($sql);
     }

@@ -65,10 +65,7 @@
         </div>
 		<div class="form-group">
             <input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password" required="required">
-        </div>        
-        <div class="form-group">
-			<label class="checkbox-inline"><input type="checkbox" required="required"> I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label>
-		</div>
+        </div>
 		<div class="form-group">
             <button type="submit" name="submit" class="buttonColor btn  btn-lg btn-block">Register Now</button>
         </div>

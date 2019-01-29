@@ -52,6 +52,12 @@
 			</div>        	
         </div>
         <div class="form-group">
+            <input type="text" class="form-control" name="user_name" placeholder="User Name" required="required">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" name="date" placeholder="YYYY-MM-DD" required="required">
+        </div>
+        <div class="form-group">
         	<input type="email" class="form-control" name="email" placeholder="Email" required="required">
         </div>
 		<div class="form-group">

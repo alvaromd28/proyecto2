@@ -1,19 +1,13 @@
 <?php
 
   session_start();
-  
-  function exist_user ($username, $password){
-    if ($username == 'silver' && $password == '1234'){
-      return true;
-      }
-    return false;
-    }
+
+  require_once('util/db_manager.php');
   
   if (isset($_POST['submit'])){
     $username = $_POST["username"];
     $password = $_POST["password"];
-    if (exist_user ($username, $password)){
-      $_SESSION["username"] = $username;
+    if (get_user ($username, $password)){
       header('Location: main.php');
     }
   }

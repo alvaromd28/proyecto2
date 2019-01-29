@@ -20,15 +20,10 @@
         $conn->query($sql);
     }
 
-<<<<<<< HEAD
     function insert_msg ($msg, $user_id){
-        
-        $sql = "INSERT INTO msg (msg,user_id) VALUES (".$msg.")";
-=======
-    function insert_msg ($msg, $user){
         $user_id = "SELECT user.id from user where user.userName = '".$user."'";
-        $sql = "INSERT INTO msg (msg,user_id) VALUES (".$msg.",".$user_id.")";
->>>>>>> b8f13608a64f92764530b652837795a340407e6d
+        $val = "'$msg', '$user_id'";
+        $sql = "INSERT INTO msg (msg,user_id) VALUES (".$val.")";
         $conn = dbConnect("localhost","root","","icsitter");
         $conn->query($sql);
     }

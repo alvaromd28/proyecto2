@@ -1,7 +1,7 @@
 <?php
 
   session_start();
-
+  
   function exist_user ($username, $password){
     if ($username == 'silver' && $password == '1234'){
       return true;

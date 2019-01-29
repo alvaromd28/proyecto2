@@ -1,4 +1,10 @@
 <?php
+function exist_user ($username, $password){
+  if ($username == 'silver' && $password == '1234'){
+      return true;
+  }
+  return false;
+}
 session_start();
 ?>
 <!DOCTYPE html>
@@ -13,6 +19,7 @@ session_start();
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="style/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
     crossorigin="anonymous">
 
@@ -60,11 +67,11 @@ session_start();
           <?php
             require_once('util/db_manager.php');
             
-            if (isset($_POST['submit'])){
+            if (isset($_POST['enter'])){
                 
                 $userName = $_POST['userName'];
                 $msg = $_POST['msg'];
-                insert_msg ($userName, $msg);
+                insert ($userName, $msg);
             }
             get_msg();
           ?>
@@ -82,7 +89,7 @@ session_start();
         <br>
         <textarea type="text" name="msg" class="form-control msg" placeholder="Write here your comment" id="usr" required></textarea>
         <br>
-        <button type="submit" name="submit" class="btn color btn-lg">Enviar   <i class="fab fa-telegram-plane"></i></button>
+        <button type="submit" name="enter" class="btn buttonColor color btn-lg">Enviar   <i class="fab fa-telegram-plane"></i></button>
       </div>
       <div class="col-sm-4"></div>
     </div>
@@ -107,7 +114,7 @@ session_start();
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 			</div>
 			<div class="modal-body">
-				<form action="/examples/actions/confirmation.php" method="post">
+				<form action="main.php" method="post">
 					<div class="form-group">
 						<input type="text" class="form-control" name="username" placeholder="Username" required="required">		
 					</div>
@@ -115,9 +122,24 @@ session_start();
 						<input type="password" class="form-control" name="password" placeholder="Password" required="required">	
 					</div>        
 					<div class="form-group">
-						<button type="submit" href="main.php" class="btn-lg color btn-block">Login</button>
+						<button type="submit" name="submit" href="main.php" class="btn-lg buttonColor color btn-block">Login</button>
 					</div>
-				</form>
+        </form>
+        <?php
+            if (isset($_POST['submit'])){
+                $username = $_POST["username"];
+                $password = $_POST["password"];
+
+                if (exist_user ($username, $password)){
+                    echo '<h1 style="color: green;"> EL USUARIO EXISTE </h1>';
+                    $_SESSION["username"] = $username;
+                    echo '<a href="main.php"> GO MAIN </a>';
+                }
+                else{
+                    echo '<h1 style="color: red;"> EL USUARIO NO EXISTE </h1>';
+                }
+            }
+        ?>
 			</div>
 			<div class="modal-footer">
 				¿No tienes una cuenta? Pincha <a href="register.php">aqui</a> para registrate

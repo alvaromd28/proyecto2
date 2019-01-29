@@ -21,6 +21,7 @@
     }
 
     function insert_msg ($msg, $user_id){
+        
         $sql = "INSERT INTO msg (msg,user_id) VALUES (".$msg.")";
         $conn = dbConnect("localhost","root","","icsitter");
         $conn->query($sql);

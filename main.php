@@ -1,11 +1,23 @@
 <?php
-function exist_user ($username, $password){
-  if ($username == 'silver' && $password == '1234'){
+
+  session_start();
+
+  function exist_user ($username, $password){
+    if ($username == 'silver' && $password == '1234'){
       return true;
+      }
+    return false;
+    }
+  
+  if (isset($_POST['submit'])){
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+    if (exist_user ($username, $password)){
+      $_SESSION["username"] = $username;
+      header('Location: main.php');
+    }
   }
-  return false;
-}
-session_start();
+        
 ?>
 <!DOCTYPE html>
 <html>
@@ -66,7 +78,7 @@ session_start();
         <div class="panel-body text-center scroll">
           <?php
             require_once('util/db_manager.php');
-            
+
             if (isset($_POST['enter'])){
                 
                 $userName = $_POST['userName'];
@@ -125,21 +137,6 @@ session_start();
 						<button type="submit" name="submit" href="main.php" class="btn-lg buttonColor color btn-block">Login</button>
 					</div>
         </form>
-        <?php
-            if (isset($_POST['submit'])){
-                $username = $_POST["username"];
-                $password = $_POST["password"];
-
-                if (exist_user ($username, $password)){
-                    echo '<h1 style="color: green;"> EL USUARIO EXISTE </h1>';
-                    $_SESSION["username"] = $username;
-                    echo '<a href="main.php"> GO MAIN </a>';
-                }
-                else{
-                    echo '<h1 style="color: red;"> EL USUARIO NO EXISTE </h1>';
-                }
-            }
-        ?>
 			</div>
 			<div class="modal-footer">
 				¿No tienes una cuenta? Pincha <a href="register.php">aqui</a> para registrate

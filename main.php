@@ -76,12 +76,9 @@
           <?php
             require_once('util/db_manager.php');
             if (isset($_POST['enter'])){
-                
-                $userName = $_POST['userName'];
                 $msg = $_POST['msg'];
-                insert_msg ($userName, $msg);
+                insert_msg ($msg);
             }
-            #get_user_id();
             get_msg();
           ?>
         </div>
@@ -94,8 +91,6 @@
     <div class="row">
       <div class="col-sm-4"></div>
       <div class="col-sm-4 text-center">
-        <input type="text" name="userName" class="form-control" placeholder="Type here your username" id="usr" required>
-        <br>
         <textarea type="text" name="msg" class="form-control msg" placeholder="Write here your comment" id="usr" required></textarea>
         <br>
         <button type="submit" name="enter" class="btn buttonColor color btn-lg">Enviar   <i class="fab fa-telegram-plane"></i></button>
@@ -105,40 +100,4 @@
   </form>
 </div>
 </body>
-
 </html>
-
-
-
-
-<center>
-<div id="myModal" class="modal fade">
-	<div class="modal-dialog modal-login">
-		<div class="modal-content">
-			<div class="modal-header">
-				<div class="avatar">
-					<img src="img/avatar.png" alt="Avatar">
-				</div>				
-				<h4 class="modal-title">Member Login</h4>	
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-			</div>
-			<div class="modal-body">
-				<form action="main.php" method="post">
-					<div class="form-group">
-						<input type="text" class="form-control" name="username" placeholder="Username" required="required">		
-					</div>
-					<div class="form-group">
-						<input type="password" class="form-control" name="password" placeholder="Password" required="required">	
-					</div>        
-					<div class="form-group">
-						<button type="submit" name="submit" href="main.php" class="btn-lg buttonColor color btn-block">Login</button>
-					</div>
-        </form>
-			</div>
-			<div class="modal-footer">
-				¿No tienes una cuenta? Pincha <a href="register.php">aqui</a> para registrate
-			</div>
-		</div>
-	</div>
-</div>     
-</center>

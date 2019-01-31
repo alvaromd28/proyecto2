@@ -20,29 +20,13 @@
         $conn->query($sql);
     }
 
-    function insert_msg ($msg, $user_id){
-        /*$user_id = "SELECT user.id from user where user.userName = '".$username."'";*/
-        //$user_id = get_user_id ();
+    function insert_msg ($msg){
         $user_id = $_SESSION['userid'];
         $val = "'$msg', '$user_id'";
         $sql = "INSERT INTO msg (msg,user_id) VALUES (".$val.")";
         $conn = dbConnect("localhost","root","","icsitter");
         $conn->query($sql);
     }
-
-    /*function get_user_id (){
-        $userName =  $_SESSION['userName'];
-        $sql = "SELECT user.id from user where user.userName = '".$userName."'";
-        $conn = dbConnect("localhost","root","","icsitter");
-        $result = $conn->query($sql);
-
-        if (mysqli_num_rows($result) > 0) {
-           return $result[0]['id'];
-        } else {
-            echo "0 results";
-        }
-
-    }*/
 
     function get_msg (){
         $sql = "SELECT msg.msg, user.userName from msg
@@ -53,7 +37,7 @@
 
         if (mysqli_num_rows($result) > 0) {
             while($row = mysqli_fetch_assoc($result)) {
-                echo  $row["msg"]. "<br>";
+                echo  $row["userName"].': '.$row["msg"]. "<br>";
             }
         } else {
             echo "0 results";

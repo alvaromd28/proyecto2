@@ -61,10 +61,10 @@
         	<input type="email" class="form-control" name="email" placeholder="Email" required="required">
         </div>
 		<div class="form-group">
-            <input type="password" class="form-control" name="password" placeholder="Password" required="required">
+            <input type="password" class="form-control" name="password" placeholder="Password" value = "Pas$w0rd1" required="required">
         </div>
 		<div class="form-group">
-            <input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password" required="required">
+            <input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password" value = "Pas$w0rd1" required="required">
         </div>
 		<div class="form-group">
             <button type="submit" name="submit" class="buttonColor btn  btn-lg btn-block">Register Now</button>
@@ -74,5 +74,3 @@
 </div>
 </body>
 </html>                            
-
-<!-- HOLITA>

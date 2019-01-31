@@ -14,7 +14,7 @@
     }
 
     function insert_user ($userName, $name, $first_surname, $birthday, $mail, $password){
-        $val = "'$userName', '$name', '$first_surname', '$birthday', '$mail', '$password'";
+        $val = "'$userName', '$name', '$first_surname', '$birthday', '$mail', SHA('$password')";
         $sql = "INSERT INTO user (userName, name, first_surname, birthday, mail, password) VALUES (".$val.")";
         $conn = dbConnect("localhost","root","","icsitter");
         $conn->query($sql);

@@ -22,15 +22,16 @@
 
     function insert_msg ($msg, $user_id){
         /*$user_id = "SELECT user.id from user where user.userName = '".$username."'";*/
-        $user_id = get_user_id();
+        //$user_id = get_user_id ();
+        $user_id = $_SESSION['userid'];
         $val = "'$msg', '$user_id'";
         $sql = "INSERT INTO msg (msg,user_id) VALUES (".$val.")";
         $conn = dbConnect("localhost","root","","icsitter");
         $conn->query($sql);
     }
 
-    function get_user_id (){
-        $userName = $_SESSION["userName"];
+    /*function get_user_id (){
+        $userName =  $_SESSION['userName'];
         $sql = "SELECT user.id from user where user.userName = '".$userName."'";
         $conn = dbConnect("localhost","root","","icsitter");
         $result = $conn->query($sql);
@@ -41,12 +42,12 @@
             echo "0 results";
         }
 
-    }
+    }*/
 
     function get_msg (){
         $sql = "SELECT msg.msg, user.userName from msg
         JOIN user ON user.id = msg.user_id
-        ORDER BY id.msg DESC LIMIT 20";
+        ORDER BY msg.id DESC LIMIT 20";
         $conn = dbConnect("localhost","root","","icsitter");
         $result = $conn->query($sql);
 
@@ -67,6 +68,7 @@
         if (mysqli_num_rows($result) > 0) {
             while($row = mysqli_fetch_assoc($result)) {
                 $_SESSION['userName'] = $row['userName'];
+                $_SESSION['userid'] = $row['id'];
                 return true;
             }
         } else {

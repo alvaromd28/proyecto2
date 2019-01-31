@@ -10,8 +10,8 @@
     $username = $_POST["username"];
     $password = $_POST["password"];
     if (get_user ($username, $password)){
-      header('Location: main.php');
       $username = $_SESSION['userName'];
+      header('Location: main.php');
     }
   }
         
@@ -81,6 +81,7 @@
                 $msg = $_POST['msg'];
                 insert_msg ($userName, $msg);
             }
+            #get_user_id();
             get_msg();
           ?>
         </div>

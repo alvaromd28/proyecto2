@@ -14,7 +14,12 @@
       header('Location: main.php');
     }
   }
-        
+  
+  if (isset($_POST['logout'])){
+    session_unset(); 
+    session_destroy();
+    header('Location: index.php');
+  }
 ?>
 <!DOCTYPE html>
 <html>
@@ -55,10 +60,17 @@
           <li><a href="#"><i class="far fa-envelope"></i></a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-        <li>
-           <a type="button" data-toggle="modal" data-target="#myModal" ><span class="glyphicon glyphicon-log-in"></span> Login </a>
-        </li>
-        
+          <form method="POST" action="#">
+            <li>
+              <div class="row">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-4 text-center">
+                  <button type="submit" name="logout" class="btn btn-danger btn-sm" style="margin-top: 10px;"> Logout </button>
+                </div>
+                <div class="col-sm-4"></div>
+              </div>
+            </li>
+          </form>
       </ul>
       </div>
     </div>
